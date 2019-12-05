@@ -1,0 +1,39 @@
+h2
+  = "Register Store Information"
+div.register_form
+  = form_with url: register_store_info_index_path, local: true do |f|
+    table
+      tr.register_form_tr
+        th.register_form_th
+          = f.label :name, "#{t 'register_store_info.index.register_name'}"
+        td.register_form_td
+          = f.text_field :name
+        th.register_form_th
+          = f.label :telno, "#{t 'register_store_info.index.register_telno'}"
+        td.register_form_td
+          = f.telephone_field :telno
+        th.register_form_th
+          = f.label :mail_address, "#{t 'register_store_info.index.register_mail_address'}"
+        td.register_form_td
+          = f.text_field :mail_address
+        th.register_form_th
+          = f.label :store_address, "#{t 'register_store_info.index.register_store_address'}"
+        td.register_form_td
+          = f.text_field :store_address
+        th.register_form_th
+          = f.label :access_info, "#{t 'register_store_info.index.register_access_info'}"
+        td.register_form_td
+          = f.text_field :access_info
+        th.register_form_th
+          = f.label :business_hour_start, "#{t 'register_store_info.index.register_business_hour_start'}"
+        td.register_form_td
+          = f.time_select :business_hour_start, minute_step: 15
+        th.register_form_th
+          = f.label :business_hour_end, "#{t 'register_store_info.index.register_business_hour_end'}"
+        td.register_form_td
+          = f.time_select :business_hour_end, minute_step: 15
+        th.register_form_th
+          = f.label :settlement_method, "#{t 'register_store_info.index.register_settlement_method'}"
+        td.register_form_td
+          = f.text_field :settlement_method
+    = f.submit "申請"

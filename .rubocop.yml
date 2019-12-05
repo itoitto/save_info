@@ -1,0 +1,74 @@
+inherit_from: .rubocop_todo.yml
+
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
+
+#deviseにより作成されたコードの為除外
+Lint/IneffectiveAccessModifier:
+  Exclude:
+    - 'app/models/user.rb'
+
+Lint/UselessAccessModifier:
+  Exclude:
+    - 'app/models/user.rb'
+
+# ドキュメントの無い public class を許可する
+Style/Documentation:
+  Enabled: false
+
+# 桁揃えが綺麗にならないことが多いので migration は除外
+Layout/ExtraSpacing:
+  Exclude:
+    - "db/migrate/*.rb"
+
+# if 文の中に 3 行程度のブロックを書くぐらいは許容した方が現実的
+Style/GuardClause:
+  MinBodyLength: 5
+
+# private/protected は一段深くインデントする
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+# has_ から始まるメソッドは許可する
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - "is_"
+    - "have_"
+  NamePrefix:
+    - "is_"
+    - "have_"
+
+# `||` も align に使うことがあるので追加する
+Layout/SpaceAroundOperators:
+  AllowForAlignment:
+    - "="
+    - "=>"
+    - "||"
+
+#Abcチェックは、30設定
+Metrics/AbcSize:
+  Enabled: true
+  Max: 30
+
+# 一行に 100 文字まで書いても OK とする
+Metrics/LineLength:
+  Max: 100
+
+AllCops:
+  # Rubyバージョン指定
+  TargetRubyVersion: 2.5.3
+  # 除外
+  Exclude:
+    - 'config.ru'
+    - '.rubocop.yml'
+    - '.rubocop_todo.yml'
+    - 'Rakefile'
+    - 'bin/**'
+    - 'lib/**'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'vendor/**/*' # rubocop config/default.yml

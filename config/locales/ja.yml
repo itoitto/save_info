@@ -1,0 +1,30 @@
+# トップ画面の文言定義
+ja:
+  top:
+    index:
+      jquery_test: 'jQuery稼働テスト(未稼働)'
+  shared:
+    header:
+      title: 'Otokkus'
+      # サイト説明文
+      explain_for_company: '法人向け説明'
+      for_company_message_1: '誤発注してしまい、大量の商品をさばきたい•••'
+      for_company_message_2: '閉店間近でセールを実施するために集客したい•••'
+      for_company_message_3: '他のお店より安く販売しているが、いまいちお客さんに情報が届いていない•••'
+      for_company_message_4: '一つでも当てはまった場合、当サイトで宣伝させてください！'
+      for_company_message_5: '以下リンクから申請できます'
+      explain_for_customer: 'サイト利用者向け説明'
+      for_customer_message_1: 'twitterなどで時々誤発注などのツイートがバズったりしていますよね？'
+      for_customer_message_2: '当サイトでは、そういうスキマ商品の情報を中心にしたお得な商品を紹介しています！'
+    footer:
+      copy_right: ©︎otokkus 2019
+  register_store_info:
+    index:
+      register_name: '企業名'
+      register_telno: '電話番号'
+      register_mail_address: 'メールアドレス'
+      register_store_address: '店舗住所'
+      register_access_info: '店舗アクセス情報'
+      register_business_hour_start: '営業開始時間'
+      register_business_hour_end: '営業終了時間'
+      register_settlement_method: '決済手段'

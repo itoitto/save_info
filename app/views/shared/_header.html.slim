@@ -1,0 +1,52 @@
+div.title_log
+    // タイトルロゴ
+    = link_to root_path do
+        = image_tag "header/title_logo_normal.png"
+
+// ヘッダリンク
+div.header_link
+    = link_to "ログイン", new_user_session_path
+    - if user_signed_in? || company_signed_in?
+        = link_to "ログアウト", destroy_user_session_path, method: :delete
+    = link_to "会員登録", new_user_registration_path
+    = link_to "検索", root_path
+    = link_to "誤発注一覧ページ", root_path
+    = link_to "閉店一覧ページ", root_path
+    = link_to "法人向け申請フォーム", new_company_session_path
+    = t 'shared.header.title'
+div.menu_icon
+    // メニューアイコン
+    = image_tag "header/baseline_menu_black_18dp.png", class: "header_menu_icon", alt: "メニューアイコン"
+    // レスポンシブメニュー
+    div.responsive_menu
+        ul.responsive_menu_unordered_list
+            li.responsive_menu_list
+                = link_to "ログイン", new_user_session_path
+            - if user_signed_in? || company_signed_in?
+                li.responsive_menu_list
+                    = link_to "ログアウト", destroy_user_session_path, method: :delete
+            li.responsive_menu_list
+                = link_to "会員登録", new_user_registration_path
+            li.responsive_menu_list
+                = link_to "検索", root_path
+            li.responsive_menu_list
+                = link_to "誤発注一覧ページ", root_path
+            li.responsive_menu_list
+                = link_to "閉店一覧ページ", root_path
+            li.responsive_menu_list
+                = link_to "法人向け申請フォーム", new_company_session_path
+            = image_tag "header/baseline_close_black_18dp.png", class: "header_menu_close_icon", alt: "閉じるボタンアイコン"
+
+javascript:
+    // ToDo メニューアイコンクリック時のアコーディオンで開く
+    //      class:header_menu_iconクリック時に、responsive_menuをdisplay: noneからblockに切り替える
+    //      挙動は、fadeInを使用する
+    $(".header_menu_icon").on("click",function(){
+        $(".responsive_menu").slideToggle();
+    });
+    // ToDo 閉じるアイコンクリック時のフェイドアウト
+    //      class:header_menu_close_iconクリック時に、responsive_menuをdisplay: noneからblockに切り替える
+    //      挙動は、fadeoutを使用する
+    $(".header_menu_close_icon").on("click",function(){
+        $(".responsive_menu").fadeOut("slow");
+    });

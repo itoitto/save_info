@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+/*レスポンシブ対応のサイズ定義*/
+/*スマホ用サイズ*/
+$smart-phone-size: 639px;
+
+/*タブレット用サイズ*/
+$tablet-min-size: 640px;
+$tablet-max-size: 1023px;
+
+/*pc用サイズ*/
+$pc-size: 1024px;
+
+// tr, td {
+//     display: block;
+// }
+
+
+/*スマホ用のcssを記述*/
+@media screen and (max-width:$smart-phone-size) {
+    // ヘッダー各リンク
+    .header_link{
+        display: none;
+    }
+    // メニューアイコンをクリックした後のアコーディオンメニュー
+    .responsive_menu{
+        display: none;
+    }
+
+    // 企業登録フォーム
+    .register_form_tr, .register_form_td{
+        display: block
+    }
+}
+
+/*tablet用のcssを記述*/
+@media only screen and (min-width:$tablet-min-size) and (max-width:$tablet-max-size) {
+    // ヘッダー
+    .menu_icon{
+        display: none;
+    }
+    // .responsive_menu{
+    //     display: none;
+    // }
+
+    // 企業登録フォーム
+    .register_form_tr, .register_form_td{
+        display: block
+    }
+}
+
+/*pc用のcssを記述*/
+@media screen and (min-width:$pc-size) {
+    // ヘッダーメニューアイコン
+    .menu_icon{
+        display: none;
+    }
+
+    // 企業登録フォーム
+    .register_form_tr, .register_form_td{
+        display: block
+    }
+}
