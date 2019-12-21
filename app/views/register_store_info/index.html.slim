@@ -1,7 +1,7 @@
 h2
   = "Register Store Information"
 div.register_form
-  = form_with url: register_store_info_index_path, local: true do |f|
+  = form_with model: @company, :url => "register_store_info/#{current_company.id}", local: true do |f|
     table
       tr.register_form_tr
         th.register_form_th
@@ -27,13 +27,14 @@ div.register_form
         th.register_form_th
           = f.label :business_hour_start, "#{t 'register_store_info.index.register_business_hour_start'}"
         td.register_form_td
-          = f.time_select :business_hour_start, minute_step: 15
+          = f.time_select :business_hour_start, minute_step: 15, prompt: true, ignore_data: true
         th.register_form_th
           = f.label :business_hour_end, "#{t 'register_store_info.index.register_business_hour_end'}"
         td.register_form_td
-          = f.time_select :business_hour_end, minute_step: 15
+          = f.time_select :business_hour_end, minute_step: 15, prompt: true, ignore_data: true
         th.register_form_th
-          = f.label :settlement_method, "#{t 'register_store_info.index.register_settlement_method'}"
+          = f.label :settlement_methods, "#{t 'register_store_info.index.register_settlement_method'}"
         td.register_form_td
-          = f.text_field :settlement_method
+          = f.collection_check_boxes :settlement_methods, @settlement_method, :id, :name, include_hidden: false do |b|
+            = b.label { b.check_box + b.text }
     = f.submit "申請"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_002942) do
+ActiveRecord::Schema.define(version: 2019_12_21_012626) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,13 +23,28 @@ ActiveRecord::Schema.define(version: 2019_11_24_002942) do
     t.string "mail_address"
     t.string "store_address"
     t.string "access_info"
-    t.integer "business_hour_start"
-    t.integer "business_hour_end"
+    t.time "business_hour_start"
+    t.time "business_hour_end"
     t.integer "settlement_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "company_settlement_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "settlement_method_id"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_settlement_methods_on_company_id"
+    t.index ["settlement_method_id"], name: "index_company_settlement_methods_on_settlement_method_id"
+  end
+
+  create_table "settlement_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -46,4 +61,6 @@ ActiveRecord::Schema.define(version: 2019_11_24_002942) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "company_settlement_methods", "companies"
+  add_foreign_key "company_settlement_methods", "settlement_methods"
 end
