@@ -44,7 +44,25 @@ $pc-size: 1024px;
 
     // 企業登録フォーム
     .register_form_tr, .register_form_td{
-        display: block
+        display: block;
+    }
+
+    // セール情報申請フォーム
+    .request_form_tr, .request_form_td{
+        display: block;
+
+        .mistake_reason_text_field{
+            width: 300px;
+            height: 100px;
+            display: table-cell;
+            vertical-align: top;
+            resize: none;
+        }
+
+        .help-icon {
+            width: 18px;
+            height: 18px;
+        }
     }
 }
 
@@ -54,13 +72,29 @@ $pc-size: 1024px;
     .menu_icon{
         display: none;
     }
-    // .responsive_menu{
-    //     display: none;
-    // }
 
     // 企業登録フォーム
     .register_form_tr, .register_form_td{
-        display: block
+        display: block;
+    }
+
+
+    // セール情報申請フォーム
+    .request_form_tr, .request_form_td{
+        display: block;
+
+        .mistake_reason_text_field{
+            width: 300px;
+            height: 100px;
+            display: table-cell;
+            vertical-align: top;
+            resize: none;
+        }
+
+        .help-icon {
+            width: 18px;
+            height: 18px;
+        }
     }
 }
 
@@ -73,6 +107,103 @@ $pc-size: 1024px;
 
     // 企業登録フォーム
     .register_form_tr, .register_form_td{
-        display: block
+        display: block;
     }
+
+    // セール情報申請フォーム
+    .request_form_tr, .request_form_td{
+        display: block;
+
+        .mistake_reason_text_field{
+            width: 300px;
+            height: 100px;
+            display: table-cell;
+            vertical-align: top;
+            resize: none;
+        }
+
+        .help-icon {
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    /* モーダル コンテンツエリア */
+    #modal-main {
+        display: none;
+        width: 500px;
+        height: 300px;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        color: #666666;
+        position:fixed;
+        z-index: 2;
+        overflow-y: scroll;
+    }
+
+    #contents {
+        z-index: 0;
+        font-size: 16px;
+    }
+
+    .page-txt {
+        margin: 30px 0 0;
+        height: 2000px;
+    }
+
+    #modal-open {
+        color: #cc0000;
+        cursor : pointer;
+    }
+
+    #modal-bg {
+        display:none;
+        width:100%;
+        height:100%;
+        background-color: rgba(0,0,0,0.5);
+        position:fixed;
+        top:0;
+        left:0;
+        z-index: 1;
+    }
+}
+
+/* モーダル コンテンツエリア */
+#modal-main {
+    display: none;
+    width: 500px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #666666;
+    position:fixed;
+    z-index: 2;
+}
+
+#contents {
+    z-index: 0;
+    font-size: 16px;
+}
+
+.page-txt {
+    margin: 30px 0 0;
+    height: 2000px;
+}
+
+#modal-open {
+    color: #cc0000;
+    cursor : pointer;
+}
+
+#modal-bg {
+    display:none;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.5);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index: 1;
 }

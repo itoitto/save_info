@@ -28,3 +28,22 @@ ja:
       register_business_hour_start: '営業開始時間'
       register_business_hour_end: '営業終了時間'
       register_settlement_method: '決済手段'
+    show:
+      maintenance_title: 'マスタメンテナンス'
+  request_sell_info:
+    new:
+      request_name: '申請種別'
+      type_sell: '通常セール'
+      type_mistake: '誤発注'
+      type_close: '閉店セール'
+      sell_start_date: 'セール開始日'
+      sell_end_date: 'セール終了日'
+      mistake_reason: '誤発注理由'
+      goods_name1: '商品名1'
+      goods_name2: '商品名2'
+      goods_name3: '商品名3'
+      goods_name4: '商品名4'
+      goods_name5: '商品名5'
+      goods_type: '商品種別'
+      description:
+        detail_description: '該当商品種類'

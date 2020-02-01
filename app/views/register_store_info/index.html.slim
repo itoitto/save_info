@@ -27,14 +27,14 @@ div.register_form
         th.register_form_th
           = f.label :business_hour_start, "#{t 'register_store_info.index.register_business_hour_start'}"
         td.register_form_td
-          = f.time_select :business_hour_start, minute_step: 15, prompt: true, ignore_data: true
+          = f.time_select :business_hour_start, minute_step: 15, prompt: true, include_blank: false, ignore_data: true
         th.register_form_th
           = f.label :business_hour_end, "#{t 'register_store_info.index.register_business_hour_end'}"
         td.register_form_td
-          = f.time_select :business_hour_end, minute_step: 15, prompt: true, ignore_data: true
+          = f.time_select :business_hour_end, minute_step: 15, prompt: true, include_blank: false, ignore_data: true
         th.register_form_th
           = f.label :settlement_methods, "#{t 'register_store_info.index.register_settlement_method'}"
         td.register_form_td
-          = f.collection_check_boxes :settlement_methods, @settlement_method, :id, :name, include_hidden: false do |b|
+          = f.collection_check_boxes :settlement_method_ids, SettlementMethod.all, :id, :name, include_hidden: false do |b|
             = b.label { b.check_box + b.text }
     = f.submit "申請"

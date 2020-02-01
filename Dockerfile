@@ -17,6 +17,9 @@ WORKDIR $APP_ROOT
 ADD ./Gemfile $APP_ROOT/Gemfile
 ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
 
+# 環境変数の設定
+ENV TZ='Asia/Tokyo'
+
 # Gemfileのbundle install
 RUN bundle install
 ADD . $APP_ROOT

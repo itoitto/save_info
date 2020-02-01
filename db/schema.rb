@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_012626) do
+ActiveRecord::Schema.define(version: 2020_01_23_140654) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_012626) do
     t.string "access_info"
     t.time "business_hour_start"
     t.time "business_hour_end"
-    t.integer "settlement_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_companies_on_email", unique: true
@@ -39,6 +38,32 @@ ActiveRecord::Schema.define(version: 2019_12_21_012626) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_settlement_methods_on_company_id"
     t.index ["settlement_method_id"], name: "index_company_settlement_methods_on_settlement_method_id"
+  end
+
+  create_table "goods_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "main_category"
+    t.string "detail_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "request_sell_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "request_type"
+    t.date "sell_start_date"
+    t.date "sell_end_date"
+    t.string "mistake_reason"
+    t.string "goods_name"
+    t.string "goods_type"
+    t.integer "price"
+    t.text "sells_point"
+    t.string "coupon_title"
+    t.date "coupon_start_date"
+    t.date "coupon_end_date"
+    t.text "coupon_content"
+    t.string "coupon_condition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settlement_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

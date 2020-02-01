@@ -1,2 +1,12 @@
 h2
   = "Register Store Information Show"
+div.maintenance_title
+  = t 'register_store_info.show.maintenance_title'
+div.mastermaintenance
+  // セール情報ボタン
+  div.request_sell_info
+    = button_to 'セール情報申請', { controller: 'request_sell_info', action: 'new' }, { method: :get }
+
+  // 店舗情報更新ボタン
+  div.change_store_info
+    = button_to '店舗情報更新', { controller: 'register_store_info', action: 'update' }, { method: :get }

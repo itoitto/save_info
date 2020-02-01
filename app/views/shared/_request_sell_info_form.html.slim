@@ -1,0 +1,106 @@
+= form_with model: @request_sell_info, method: :post, local: true do |f|
+  table
+    tr.request_form_tr
+      th.request_form_th
+        = f.label :request_type, "#{t 'request_sell_info.new.request_name'}"
+      td.request_form_td
+        = f.select :request_type, [["#{t 'request_sell_info.new.type_sell'}", "0"], ["#{t 'request_sell_info.new.type_mistake'}", "1"], ["#{t 'request_sell_info.new.type_close'}", "2"]]
+      th.request_form_th
+        = f.label :sell_start_date, "#{t 'request_sell_info.new.sell_start_date'}"
+      td.request_form_td
+        = date_field_tag 'sell_start_info', nil
+      th.request_form_th
+        = f.label :sell_end_date, "#{t 'request_sell_info.new.sell_end_date'}"
+      td.request_form_td
+        = date_field_tag 'sell_end_info', nil
+      th.request_form_th
+        = f.label :mistake_reason, "#{t 'request_sell_info.new.mistake_reason'}", :html => { :onsubmit => "return false;" }
+      td.request_form_td
+        = f.text_area :mistake_reason, class: "mistake_reason_text_field"
+      th.request_form_th
+        = f.label :goods_name, "#{t 'request_sell_info.new.goods_name1'}"
+      td.request_form_td
+        = f.text_field :goods_name
+      th.request_form_th
+        = f.label :goods_type, "#{t 'request_sell_info.new.goods_type'}"
+        = image_tag "request_sell_info/request-sell-info-form-help.svg", class: "help-icon", id: "modal-open"
+      td.request_form_td
+        = f.collection_select(:goods_type, @goods_type, :main_category, :main_category)
+      th.request_form_th
+        = f.label :goods_name, "#{t 'request_sell_info.new.goods_name2'}"
+      td.request_form_td
+        = f.text_field :goods_name
+      th.request_form_th
+        = f.label :goods_type, "#{t 'request_sell_info.new.goods_type'}"
+        = image_tag "request_sell_info/request-sell-info-form-help.svg", class: "help-icon"
+      td.request_form_td
+        = f.collection_select(:goods_type, @goods_type, :main_category, :main_category)
+      th.request_form_th
+        = f.label :goods_name, "#{t 'request_sell_info.new.goods_name3'}"
+      td.request_form_td
+        = f.text_field :goods_name
+      th.request_form_th
+        = f.label :goods_type, "#{t 'request_sell_info.new.goods_type'}"
+        = image_tag "request_sell_info/request-sell-info-form-help.svg", class: "help-icon"
+      td.request_form_td
+        = f.collection_select(:goods_type, @goods_type, :main_category, :main_category)
+      th.request_form_th
+        = f.label :goods_name, "#{t 'request_sell_info.new.goods_name4'}"
+      td.request_form_td
+        = f.text_field :goods_name
+      th.request_form_th
+        = f.label :goods_type, "#{t 'request_sell_info.new.goods_type'}"
+        = image_tag "request_sell_info/request-sell-info-form-help.svg", class: "help-icon"
+      td.request_form_td
+        = f.collection_select(:goods_type, @goods_type, :main_category, :main_category)
+      th.request_form_th
+        = f.label :goods_name, "#{t 'request_sell_info.new.goods_name5'}"
+      td.request_form_td
+        = f.text_field :goods_name
+      th.request_form_th
+        = f.label :goods_type, "#{t 'request_sell_info.new.goods_type'}"
+        = image_tag "request_sell_info/request-sell-info-form-help.svg", class: "help-icon"
+      td.request_form_td
+        = f.collection_select(:goods_type, @goods_type, :main_category, :main_category)
+  = f.submit "申請"
+
+#modal-main
+  = render partial: "shared/goods_type_description"
+#contents
+  p
+    a#modal-open
+      | 【クリックでモーダルウィンドウを開きます。】
+    / p.page-txt
+    /   | ここからページ本文
+    /   br
+    /   | ↓↓↓　スクロールしてください ↓↓↓
+
+javascript:
+  $(function(){
+    $("#modal-open").click(function(){
+      $("body").append('<div id="modal-bg"></div>');
+      modalResize();
+
+      $("#modal-bg,#modal-main").fadeIn("slow");
+
+      $("#modal-bg,#modal-main").click(function(){
+        $("#modal-main,#modal-bg").fadeOut("slow",function(){
+          $('#modal-bg').remove();
+        });
+      });
+
+      $(window).resize(modalResize);
+      function modalResize(){
+        var w = $(window).width();
+        var h = $(window).height();
+
+        var cw = $("#modal-main").outerWidth();
+        var ch = $("#modal-main").outerHeight();
+
+        $("#modal-main").css({
+          "left": ((w - cw)/2) + "px",
+          "top": ((h - ch)/2) + "px"
+        });
+      }
+    });
+  });
