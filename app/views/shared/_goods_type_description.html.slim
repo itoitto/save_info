@@ -1,0 +1,7 @@
+- @goods_type_descriptions_array.each do |goods_type_descriptions|
+  - goods_type_descriptions.each_with_index do |main, idx|
+    p#title
+      - if(idx == 1)
+        = I18n.t(".request_sell_info.new.description.detail_description")
+    p.goods_description
+      = main

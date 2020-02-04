@@ -15,5 +15,11 @@ Rails.application.routes.draw do
   }
 
   # 店舗情報登録画面
-  resources :register_store_info, only: [:index]
+  resources :register_store_info
+
+  # 決済手段
+  resources :settlement_methods
+
+  # セール情報申請画面
+  resources :request_sell_info
 end
