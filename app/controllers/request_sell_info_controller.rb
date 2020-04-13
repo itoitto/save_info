@@ -16,8 +16,33 @@ class RequestSellInfoController < ApplicationController
     end
 
     @goods_type_descriptions_array = goods_type_descriptions_array
+
+    @request_sell_info = RequestSellInfo.new
+    @request_sell_info.sell_goods.build
+  end
+
+  def index
   end
 
   def create
+    @request_sell_info = RequestSellInfo.new(sell_goods_params)
+
+    if params[:preview_button]
+      render action: :show
+    else
+      @request_sell_info.save!(sell_goods_params)
+    end
   end
+
+  def confirm
+    @request_sell_info = RequestSellInfo.new(sell_goods_params)
+
+    render :new if @request_sell_info.invalid?
+  end
+
+  private
+
+    def sell_goods_params
+      params.require(:request_sell_info).permit(:company_id, :request_type, :sell_start_date, :sell_end_date, :mistake_reason, sell_goods_attributes: %i[id goods_name goods_type price sells_point _destroy])
+    end
 end

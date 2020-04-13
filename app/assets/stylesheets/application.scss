@@ -59,6 +59,14 @@ $pc-size: 1024px;
             resize: none;
         }
 
+        .sells_point_text_field{
+            width: 300px;
+            height: 100px;
+            display: table-cell;
+            vertical-align: top;
+            resize: none;
+        }
+
         .help-icon {
             width: 18px;
             height: 18px;
@@ -91,6 +99,14 @@ $pc-size: 1024px;
             resize: none;
         }
 
+        .sells_point_text_field {
+            width: 300px;
+            height: 100px;
+            display: table-cell;
+            vertical-align: top;
+            resize: none;
+        }
+
         .help-icon {
             width: 18px;
             height: 18px;
@@ -110,6 +126,18 @@ $pc-size: 1024px;
         display: block;
     }
 
+    // 商品フォーム
+    #sell_goods {
+        display: block;
+
+        .sells_point_text_field{
+            width: 300px;
+            // height: 100px;
+            display: table-cell;
+            vertical-align: top;
+            resize: none;
+        }
+    }
     // セール情報申請フォーム
     .request_form_tr, .request_form_td{
         display: block;

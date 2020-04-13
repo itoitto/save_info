@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_140654) do
+ActiveRecord::Schema.define(version: 2020_02_08_011151) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,10 +53,6 @@ ActiveRecord::Schema.define(version: 2020_01_23_140654) do
     t.date "sell_start_date"
     t.date "sell_end_date"
     t.string "mistake_reason"
-    t.string "goods_name"
-    t.string "goods_type"
-    t.integer "price"
-    t.text "sells_point"
     t.string "coupon_title"
     t.date "coupon_start_date"
     t.date "coupon_end_date"
@@ -64,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_01_23_140654) do
     t.string "coupon_condition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sell_goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "goods_name"
+    t.string "goods_type"
+    t.integer "price"
+    t.text "sells_point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "request_sell_info_id"
   end
 
   create_table "settlement_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

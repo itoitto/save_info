@@ -1,0 +1,77 @@
+= form_with model: @request_sell_info, :url => {action: "confirm" }, method: :post, local: true do |f|
+  table
+    tr.request_form_tr
+      th.request_form_th
+        = f.label :request_type, "#{t 'request_sell_info.new.request_name'}"
+      td.request_form_td
+        = f.select :request_type, [["#{t 'request_sell_info.new.type_sell'}", "0"], ["#{t 'request_sell_info.new.type_mistake'}", "1"], ["#{t 'request_sell_info.new.type_close'}", "2"]]
+      th.request_form_th
+        = f.label :sell_start_date, "#{t 'request_sell_info.new.sell_start_date'}"
+      td.request_form_td
+        = date_field_tag 'request_sell_info[sell_start_date]', nil, {:min=>"1900-01-01", :max=> "2100-12-31"}
+      th.request_form_th
+        = f.label :sell_end_date, "#{t 'request_sell_info.new.sell_end_date'}"
+      td.request_form_td
+        = date_field_tag 'request_sell_info[sell_end_date]', nil, {:min=>"1900-01-01", :max=> "2100-12-31"}
+      th.request_form_th
+        = f.label :mistake_reason, "#{t 'request_sell_info.new.mistake_reason'}", :html => { :onsubmit => "return false;" }
+      td.request_form_td
+        = f.text_area :mistake_reason, class: "mistake_reason_text_field"
+  #sell_goods
+    = f.fields_for :sell_goods do |sell_good|
+      = render partial: 'sell_good_fields', locals: { f: sell_good }
+    #add_goods_form
+      = link_to_add_association "商品を追加", f, :sell_goods
+  = f.submit "確認", :name => 'preview_button'
+
+#modal-main
+  = render partial: "shared/goods_type_description"
+
+javascript:
+  $(function(){
+    $("#modal-open").click(function(){
+      $("body").append('<div id="modal-bg"></div>');
+      modalResize();
+
+      $("#modal-bg,#modal-main").fadeIn("slow");
+
+      $("#modal-bg,#modal-main").click(function(){
+        $("#modal-main,#modal-bg").fadeOut("slow",function(){
+          $('#modal-bg').remove();
+        });
+      });
+
+      $(window).resize(modalResize);
+      function modalResize(){
+        var w = $(window).width();
+        var h = $(window).height();
+
+        var cw = $("#modal-main").outerWidth();
+        var ch = $("#modal-main").outerHeight();
+
+        $("#modal-main").css({
+          "left": ((w - cw)/2) + "px",
+          "top": ((h - ch)/2) + "px"
+        });
+      }
+    });
+
+    // 商品フォーム追加ボタンの制御処理
+    $('#sell_goods').on('cocoon:after-insert', function() {
+      check_to_hide_or_show_add_link();
+    });
+
+    $('#sell_goods').on('cocoon:after-remove', function() {
+      check_to_hide_or_show_add_link();
+    });
+
+    check_to_hide_or_show_add_link();
+
+    function check_to_hide_or_show_add_link() {
+      if ($('#sell_goods .nested-fields').length == 5) {
+        $('#add_goods_form a').hide();
+      } else {
+        $('#add_goods_form a').show();
+      }
+    }
+  });

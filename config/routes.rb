@@ -21,5 +21,16 @@ Rails.application.routes.draw do
   resources :settlement_methods
 
   # セール情報申請画面
-  resources :request_sell_info
+  post '/request_sell_info/confirm', to: 'request_sell_info#confirm'
+  get '/request_sell_info/confirm', to: 'request_sell_info#confirm'
+  get '/request_sell_info', to: 'request_sell_info#index'
+  post '/request_sell_info', to: 'request_sell_info#create'
+  get '/request_sell_info/new', to: 'request_sell_info#new'
+
+  # resources :request_sell_info do
+  #   collection do
+  #     get 'confirm'
+  #     post 'confirm'
+  #   end
+  # end
 end

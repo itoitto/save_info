@@ -1,0 +1,7 @@
+h2
+  = "Request Sell Information Confirm"
+
+= form_with model: @request_sell_info, :url => {action: "create" }, method: :post, local: true do |f|
+  = @request_sell_info.request_type
+  = @request_sell_info.sell_start_date
+  = f.submit "申請", :name => 'preview_button'

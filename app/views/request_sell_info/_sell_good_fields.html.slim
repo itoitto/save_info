@@ -1,0 +1,43 @@
+.nested-fields
+  th.request_form_th
+    = f.label :goods_name, "#{t 'request_sell_info.new.goods_name'}"
+  td.request_form_td
+    = f.text_field :goods_name
+  th.request_form_th
+    = f.label :goods_type, "#{t 'request_sell_info.new.goods_type'}"
+    = image_tag "request_sell_info/request-sell-info-form-help.svg", class: "help-icon", id: "modal-open"
+  td.request_form_td
+    = f.collection_select(:goods_type, @goods_type, :main_category, :main_category)
+  th.request_form_th
+    = f.label :price, "#{t 'request_sell_info.new.price'}"
+  td.request_form_td
+    = f.text_field :price
+  th.request_form_th
+    = f.label :sells_point, "#{t 'request_sell_info.new.sells_point'}", :html => { :onsubmit => "return false;" }
+  td.request_form_td
+    = f.text_area :sells_point, class: "sells_point_text_field"
+  #remove_goods_form
+    = link_to_remove_association "商品を削除", f
+
+javascript:
+    // 商品フォーム削除ボタンの制御処理
+    $('#sell_goods').on('cocoon:after-insert', function() {
+      check_to_hide_or_show_remove_link();
+    });
+
+    $('#sell_goods').on('cocoon:after-remove', function() {
+      check_to_hide_or_show_remove_link();
+    });
+
+    check_to_hide_or_show_remove_link();
+
+    function check_to_hide_or_show_remove_link() {
+      if ($('#sell_goods .nested-fields').length == 1) {
+        $('#remove_goods_form a').hide();
+      } else {
+        $('#remove_goods_form a').show();
+      }
+
+      // 追加ボタンをクリック時、最初の商品フォームに対して、削除ボタンを非表示にする
+      $('.remove_fields:first').hide();
+    }
